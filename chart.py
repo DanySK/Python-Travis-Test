@@ -1,3 +1,7 @@
+import os
+if os.environ.get('DISPLAY') is None:
+    print('Switch to non-graphical backend')
+    matplotlib.use('Agg')
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
