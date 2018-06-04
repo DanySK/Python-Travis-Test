@@ -19,5 +19,6 @@ deploy:
   file:
     - "${HOME}/build/${TRAVIS_REPO_SLUG}/*.tar.gz"
     - "${HOME}/build/${TRAVIS_REPO_SLUG}/dist/*"
+  skip_cleanup: true
   on:
     branch: develop
