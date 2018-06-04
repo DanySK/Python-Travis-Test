@@ -11,15 +11,13 @@ script:
     - python setup.py sdist bdist_wheel
 before_deploy:
     - tar -zcvf charts.tar.gz *.pdf
-    - git config --local user.name "Danilo Pianini"
-    - git config --local user.email "danilo.pianini@unibo.it"
-    - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
   provider: releases
   api_key:
     secure: TipyIOgApxp6iCTeZd+3VlQhpQpbI2OadErX6r2UQEXEJkyIfT1cLkyINQMIDCK3yH8F+s5H+gq0R7LsEvDVSKOsWGMw+sPGCTI6skVLCoXnxpbugr0nLNGDCeGMVIl5x96TDv/zvG5wyCWk6bOx7Nre+uZEZG28UiL9mNl0Kmz2kVwM1lJB4fvPY8gm4yN+b7yKcrd5cdPBzRhSYsN9ksqAYmwSCXKxAza522OctTf4pO+1BFrBtVeQW/EINL6R42ygDVZ1qB/TgdX5yFhOxomWsYHeReTiYZXpbZYS8yeb8zzi1l68TG4XeBYrEuUlIPBvX67OPJqCk10HZJFgfoUsy53f7A22NTq6Epk9C0fxZDBFWEYqeZie2ZjrFY6x8qnEJnk/ZhcATMD9qIrzr75im888u1PgKwT8Wb6e2mqdLnHM7lVyIu+2uskkSNhe/EbkeV0xkxVQQAwBnHXA0bdkY1x+7aF94Vd9G3lLKFjKwaMxeaNNbgKR5j6Krb2GXktlNN6t18TI2aEzZKgGAsZl5ISaB+YPFmcQ1HMi4tihom7QnJ6XyDLZ5cf8nfMO9IWvbWSPXvzjK0lzPT92c65oK/9QfagvsBkCxTTtesXlI9Wa6CmIVB0w8IFJy7s29CFZ3enHilj+ZfIaDLAVGEYyQZuJlh+I5CWdIHHb2q0=
+  file_glob: true
   file:
     - "*.tar.gz"
-    - "dist/"
+    - "dist/*"
   on:
     branch: develop
